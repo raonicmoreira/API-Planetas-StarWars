@@ -11,15 +11,19 @@ public class Planeta {
 	private String nome;
 	private String clima;
 	private String terreno;
-	private String quantidadefilmes;
+	
+	public Planeta() {
+	}
 	
 	
-	public String getQuantidadefilmes() {
-		return quantidadefilmes;
+	public Planeta(String id, String nome, String clima, String terreno) {
+		this.id = id;
+		this.nome = nome;
+		this.clima = clima;
+		this.terreno = terreno;
 	}
-	public void setQuantidadefilmes(String quantidadefilmes) {
-		this.quantidadefilmes = quantidadefilmes;
-	}
+
+
 	public String getId() {
 		return id;
 	}

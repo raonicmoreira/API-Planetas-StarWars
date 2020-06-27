@@ -26,4 +26,8 @@ public class PlanetaService {
 		Optional<Planeta> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
+	
+	public Planeta insert(Planeta obj) {
+		return repository.insert(obj);
+	}
 }

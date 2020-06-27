@@ -19,6 +19,10 @@ public class PlanetaDTO {
 		clima = obj.getClima();
 		terreno = obj.getTerreno();
 	}
+	
+	public Planeta fromDTO(PlanetaDTO objDto) {
+		return new Planeta(objDto.getId(), objDto.getNome(), objDto.getClima(), objDto.getTerreno());
+	}
 
 	public String getId() {
 		return id;
