@@ -30,4 +30,9 @@ public class PlanetaService {
 	public Planeta insert(Planeta obj) {
 		return repository.insert(obj);
 	}
+	
+	public void delete(String id) {
+		findById(id);
+		repository.deleteById(id);
+	}
 }
