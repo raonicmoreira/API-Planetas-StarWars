@@ -36,9 +36,14 @@ public class PlanetaService {
 	}
 	
 	// buscar planeta por nome
-	public Planeta findByNome(String nome) {
-		Optional<Planeta> obj = repository.findByNomeLikeIgnoreCase(nome);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	public List<Planeta> findByNome(String nome) {
+		
+		Optional<List<Planeta>> obj = repository.findByNomeLikeIgnoreCase(nome);
+		if(obj.get().isEmpty()){
+			System.out.println("objeto não encontrado");
+			throw new ObjectNotFoundException("Objeto não encontrado");
+		}
+		return obj.get();
 	}
 	
 	
@@ -60,8 +65,6 @@ public class PlanetaService {
 		Integer qtFilmes;
 	
 			ResponseEntity<ResultApi> exchange = restTemplate.exchange(url+name,HttpMethod.GET, null, ResultApi.class);
-			System.out.println("----------------------");
-			System.out.println(exchange.getBody());
 			if(exchange.getBody().getResults() == null) {
 				return qtFilmes = 0;
 			}

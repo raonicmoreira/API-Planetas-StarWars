@@ -39,8 +39,8 @@ public class PlanetaController {
 			return listDTO;
 		}
 		if(nome != null) {
-			Planeta obj = service.findByNome(nome);
-			listDTO.add(new PlanetaDTO(obj));
+			List<Planeta> obj = service.findByNome(nome);
+			listDTO = obj.stream().map(x -> new PlanetaDTO(x)).collect(Collectors.toList());
 			return listDTO;
 		}
 		List<Planeta> list = service.findAll();
