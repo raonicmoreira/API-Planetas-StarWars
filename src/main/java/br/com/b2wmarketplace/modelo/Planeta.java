@@ -18,8 +18,14 @@ public class Planeta {
 	
 
 	public Planeta(String id, String nome, String clima, String terreno, Integer quantidadeAparicoesEmFilmes) {
-		super();
 		this.id = id;
+		this.nome = nome;
+		this.clima = clima;
+		this.terreno = terreno;
+		this.quantidadeAparicoesEmFilmes = quantidadeAparicoesEmFilmes;
+	}
+	
+	public Planeta(String nome, String clima, String terreno, Integer quantidadeAparicoesEmFilmes) {
 		this.nome = nome;
 		this.clima = clima;
 		this.terreno = terreno;

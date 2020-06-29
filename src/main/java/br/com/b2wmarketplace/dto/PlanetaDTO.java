@@ -28,6 +28,18 @@ public class PlanetaDTO {
 	public PlanetaDTO() {
 	}
 	
+	
+	public PlanetaDTO(String id, @NotBlank @NotNull String nome, @NotBlank @NotNull String clima,
+			@NotBlank @NotNull String terreno, Integer quantidadeAparicoesEmFilmes) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.clima = clima;
+		this.terreno = terreno;
+		this.quantidadeAparicoesEmFilmes = quantidadeAparicoesEmFilmes;
+	}
+
+
 	public PlanetaDTO(Planeta obj) {
 		id = obj.getId();
 		nome = obj.getNome();

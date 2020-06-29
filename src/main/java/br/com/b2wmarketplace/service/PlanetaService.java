@@ -61,16 +61,16 @@ public class PlanetaService {
 	}
 	
 	// Consultando numero de filmes em que o planeta apareceu
-	private Integer consultarFilmeStarWars(String name) {
+	public Integer consultarFilmeStarWars(String name) {
 		Integer qtFilmes;
 	
-			ResponseEntity<ResultApi> exchange = restTemplate.exchange(url+name,HttpMethod.GET, null, ResultApi.class);
-			if(exchange.getBody().getResults() == null) {
-				return qtFilmes = 0;
-			}
-			List<String> filmes = exchange.getBody().getResults().get(0).getFilms();
-			qtFilmes = filmes.size();
-			return qtFilmes;
+		ResponseEntity<ResultApi> exchange = restTemplate.exchange(url+name,HttpMethod.GET, null, ResultApi.class);
+		if(exchange.getBody().getResults() == null) {
+			return qtFilmes = 0;
+		}
+		List<String> filmes = exchange.getBody().getResults().get(0).getFilms();
+		qtFilmes = filmes.size();
+		return qtFilmes;
 		
 	}
 	
