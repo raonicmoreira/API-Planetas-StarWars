@@ -1,6 +1,7 @@
 package br.com.b2wmarketplace.controller;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,28 +27,37 @@ public class PlanetaController {
 	@Autowired
 	private PlanetaService service;
 	
-	//endpoint para listar todos os planetas cadastrados
+	//endpoint para listar por id, nome ou todos os planetas cadastrados
 	@GetMapping
-	public ResponseEntity<List<PlanetaDTO>> listar(){
+	public List<PlanetaDTO> listar(String id, String nome){
 		
+		List<PlanetaDTO> listDTO = new ArrayList<>();
+		
+		if(id != null) {
+			Planeta obj = service.findById(id);
+			listDTO.add(new PlanetaDTO(obj));
+			return listDTO;
+		}
+		if(nome != null) {
+			Planeta obj = service.findByNome(nome);
+			listDTO.add(new PlanetaDTO(obj));
+			return listDTO;
+		}
 		List<Planeta> list = service.findAll();
+		
 		// convertendo lista de planeta em lista de planetaDto
-		List<PlanetaDTO> listDto = list.stream().map(x -> new PlanetaDTO(x)).collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDto);
+		listDTO = list.stream().map(x -> new PlanetaDTO(x)).collect(Collectors.toList());
+		
+		return listDTO;
 	}
 	
-	//endpoint para buscar por ID
-	@GetMapping(value="/{id}")
-	public ResponseEntity<PlanetaDTO> bucarPorId(@PathVariable String id){
-		Planeta obj = service.findById(id);
-		return ResponseEntity.ok().body(new PlanetaDTO(obj));
-	}
 	
 	//endpoint para inserir Planeta
 	@PostMapping
 	public ResponseEntity<Void> inserirPlaneta(@RequestBody PlanetaDTO objDto){
 		Planeta obj = objDto.fromDTO(objDto);
 		obj = service.insert(obj);
+		
 		// recuperando caminho do objeto criado
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -59,6 +69,7 @@ public class PlanetaController {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 	
 }
 	

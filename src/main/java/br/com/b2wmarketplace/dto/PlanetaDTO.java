@@ -9,6 +9,7 @@ public class PlanetaDTO {
 	private String nome;
 	private String clima;
 	private String terreno;
+	private Integer quantidadeAparicoesEmFilmes;
 	
 	public PlanetaDTO() {
 	}
@@ -18,10 +19,11 @@ public class PlanetaDTO {
 		nome = obj.getNome();
 		clima = obj.getClima();
 		terreno = obj.getTerreno();
+		quantidadeAparicoesEmFilmes = obj.getQuantidadeAparicoesEmFilmes();
 	}
 	
 	public Planeta fromDTO(PlanetaDTO objDto) {
-		return new Planeta(objDto.getId(), objDto.getNome(), objDto.getClima(), objDto.getTerreno());
+		return new Planeta(objDto.getId(), objDto.getNome(), objDto.getClima(), objDto.getTerreno(), objDto.getQuantidadeAparicoesEmFilmes());
 	}
 
 	public String getId() {
@@ -54,6 +56,14 @@ public class PlanetaDTO {
 
 	public void setTerreno(String terreno) {
 		this.terreno = terreno;
+	}
+
+	public Integer getQuantidadeAparicoesEmFilmes() {
+		return quantidadeAparicoesEmFilmes;
+	}
+
+	public void setQuantidadeAparicoesEmFilmes(Integer quantidadeAparicoesEmFilmes) {
+		this.quantidadeAparicoesEmFilmes = quantidadeAparicoesEmFilmes;
 	}
 
 	

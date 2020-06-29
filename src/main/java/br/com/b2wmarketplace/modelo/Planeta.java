@@ -11,18 +11,20 @@ public class Planeta {
 	private String nome;
 	private String clima;
 	private String terreno;
+	private Integer quantidadeAparicoesEmFilmes;
 	
 	public Planeta() {
 	}
 	
-	
-	public Planeta(String id, String nome, String clima, String terreno) {
+
+	public Planeta(String id, String nome, String clima, String terreno, Integer quantidadeAparicoesEmFilmes) {
+		super();
 		this.id = id;
 		this.nome = nome;
 		this.clima = clima;
 		this.terreno = terreno;
+		this.quantidadeAparicoesEmFilmes = quantidadeAparicoesEmFilmes;
 	}
-
 
 	public String getId() {
 		return id;
@@ -48,6 +50,17 @@ public class Planeta {
 	public void setTerreno(String terreno) {
 		this.terreno = terreno;
 	}
+
+
+	public Integer getQuantidadeAparicoesEmFilmes() {
+		return quantidadeAparicoesEmFilmes;
+	}
+
+
+	public void setQuantidadeAparicoesEmFilmes(Integer quantidadeAparicoesEmFilmes) {
+		this.quantidadeAparicoesEmFilmes = quantidadeAparicoesEmFilmes;
+	}
+
 	
 	
 }
