@@ -1,14 +1,28 @@
 package br.com.b2wmarketplace.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import br.com.b2wmarketplace.modelo.Planeta;
 
 //class Data Transfer Object de Planetas
 public class PlanetaDTO {
 
+
 	private String id;
+	
+	@NotBlank
+	@NotNull
 	private String nome;
+	
+	@NotBlank
+	@NotNull
 	private String clima;
+	
+	@NotBlank
+	@NotNull
 	private String terreno;
+	
 	private Integer quantidadeAparicoesEmFilmes;
 	
 	public PlanetaDTO() {

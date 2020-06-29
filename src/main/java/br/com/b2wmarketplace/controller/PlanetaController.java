@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -54,7 +56,7 @@ public class PlanetaController {
 	
 	//endpoint para inserir Planeta
 	@PostMapping
-	public ResponseEntity<Void> inserirPlaneta(@RequestBody PlanetaDTO objDto){
+	public ResponseEntity<Void> inserirPlaneta(@RequestBody @Valid PlanetaDTO objDto){
 		Planeta obj = objDto.fromDTO(objDto);
 		obj = service.insert(obj);
 		
