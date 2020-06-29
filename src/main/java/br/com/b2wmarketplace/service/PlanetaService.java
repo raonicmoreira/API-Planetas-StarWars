@@ -37,7 +37,7 @@ public class PlanetaService {
 	
 	// buscar planeta por nome
 	public Planeta findByNome(String nome) {
-		Optional<Planeta> obj = repository.findByNome(nome);
+		Optional<Planeta> obj = repository.findByNomeLikeIgnoreCase(nome);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
